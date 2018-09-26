@@ -48,13 +48,25 @@ class LoginController
 
 	function logout()
 	{
-		session_destroy($_SESSION['admin']);
-		header('Location: index.php?mod=login&act=callForm');
+		if ($_SESSION['admin_isLogin'] == true) {
+			unset($_SESSION['admin']);
+			$_SESSION['admin_isLogin'] = false;
+			header('Location: index.php?mod=login&act=callForm');
+		}
+		if ($_SESSION['user_isLogin'] == true) {
+			unset($_SESSION['user']);
+			$_SESSION['user_isLogin'] = false;
+			header('Location: index.php?mod=user&act=list');
+		}
 	}
 
 	function dashboard()
 	{
 		$employee_number = $this->model_admin->count();
+		// echo "<pre>";
+		// print_r($employee_number['COUNT(*)']);
+		// echo "</pre>";
+		// die;
 		$customer_number = $this->model_user->count();
 		$bill_number = $this->model_bill->count();
 		$product_number = $this->model_product->count();

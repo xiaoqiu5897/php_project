@@ -172,6 +172,9 @@ switch ($mod) {
 		case 'detail':
 		$controller->detail();
 		break;
+		case 'payment':
+		$controller->payment();
+		break;
 		default:
 				# code...
 		break;

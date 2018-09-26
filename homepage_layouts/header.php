@@ -40,6 +40,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Cormorant+Garamond:600i|Playfair+Display:400i" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<style type="text/css">
 	a{
 		text-decoration: none!important;
@@ -53,8 +54,8 @@
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
-			<div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
+			<div class="top-bar" style="height: 60px!important">
+				<div class="content-topbar flex-sb-m h-full container" >
 					<div class="left-top-bar">
 						Miễn phí shipping cho những đơn hàng trên 2,000,000VNĐ
 					</div>
@@ -63,10 +64,23 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							Help & FAQs
 						</a>
+						<?php if (isset($_SESSION['user'])){?>
+							<div class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<img src="uploads/ava_customers/<?= $_SESSION['user']['AVATAR']?>" style="width: 40px;height: 100%; border-radius: 50%">
+									&nbsp&nbsp<?= $_SESSION['user']['TEN_KH'] ?>
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #222; width: 200px!important; z-index: 2000" >
+									<a class="dropdown-item" href="?mod=login&act=logout">Đăng xuất</a>
+								</div>
+							</div>
+						<?php }else{ ?>
+							<a href="?mod=login&act=callForm" class="flex-c-m trans-04 p-lr-25">
+								Đăng nhập
+								&nbsp&nbsp<i class="fas fa-angle-down"></i>
+							</a>
+						<?php } ?>
 
-						<a href="?mod=login&act=callForm" class="flex-c-m trans-04 p-lr-25">
-							Đăng nhập
-						</a>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							EN
@@ -79,9 +93,9 @@
 				</div>
 			</div>
 
-			<div class="wrap-menu-desktop">
+			<div class="wrap-menu-desktop" style="padding-top: 35px!important">
 				<nav class="limiter-menu-desktop container">
-					
+
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
 						<h1 style="font-family: 'Playfair Display', serif!important; font-weight: bolder; color:rgba(71,201,229,0.9)" >ZENT CLOSET</h1>

@@ -66,7 +66,7 @@ require_once('homepage_layouts/header.php');
 
 								<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
 									<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-										Update Cart
+										Cập nhật
 									</div>
 								</div>
 							</div>
@@ -92,48 +92,17 @@ require_once('homepage_layouts/header.php');
 									</div>
 								</div>
 
-								<div class="flex-w flex-t bor12 p-t-15 p-b-30">
-									<div class="size-208 w-full-ssm">
-										<span class="stext-110 cl2">
-											Shipping:
-										</span>
-									</div>
-
-									<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-
-										<div class="p-t-15">
-											<span class="stext-112 cl8">
-												Tính phí ship
-											</span>
-
-											<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-												<select class="js-select2" name="time">
-													<option>Chọn thành phố...</option>
-													<option>Hà Nội</option>
-													<option>HCM</option>
-												</select>
-												<div class="dropDownSelect2"></div>
-											</div>
-
-											<div class="bor8 bg0 m-b-12">
-												<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="State /  country">
-											</div>
-
-											<div class="bor8 bg0 m-b-22">
-												<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Postcode / Zip">
-											</div>
-
-											<div class="flex-w">
-												<div class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
-													Cập nhật 
-												</div>
-											</div>
-
+								<?php if (isset($_SESSION['user'])) { ?>
+									<div class="flex-w flex-t bor12 p-t-15 p-b-30">
+										<div>
+											<label>Tên khách hàng: <?= $_SESSION['user']['TEN_KH'] ?></label>
+											<label>Địa chỉ:  <?= $_SESSION['user']['DIA_CHI'] ?></label><br>
+											<label>Số điện thoại:  <?= $_SESSION['user']['SDT'] ?></label>
 										</div>
 									</div>
-								</div>
+								<?php } ?>
 
-								<div class="flex-w flex-t p-t-27 p-b-33">
+								<!-- <div class="flex-w flex-t p-t-27 p-b-33">
 									<div class="size-208">
 										<span class="mtext-101 cl2">
 											Tổng
@@ -145,9 +114,9 @@ require_once('homepage_layouts/header.php');
 											<?= number_format($tongtien) ?> VNĐ
 										</span>
 									</div>
-								</div>
+								</div> -->
 
-								<a class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+								<a class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer payment">
 									Hoàn tất đặt hàng
 								</a>
 							</div>
@@ -157,6 +126,30 @@ require_once('homepage_layouts/header.php');
 			</form>
 		</div>
 	</section>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.payment').click(function () {
+				$.ajax({  
+					url:"?mod=user&act=payment",  
+					method:"get",   
+					success:function(){
+						swal({
+							title: "Thành công!",
+							text: "Bạn đã đặt hàng thành công!",
+							icon: "success",
+							button: "OK",
+						})
+						.then((a) => {
+							if (a) {
+								window.location.href = "?mod=user&act=cart"
+							}
+						});
+					}  
+				}); 
+			})
+		})
+	</script>
 
 	<?php 
 	require_once('homepage_layouts/footer.php');

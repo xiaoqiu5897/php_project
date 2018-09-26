@@ -88,6 +88,7 @@ class SaleController
 		$hoadon['MA_HD'] = $customer['MA_KH'].'_'.$MA_NV.'_'.time();
 		$hoadon['MA_KH'] = $customer['MA_KH'];
 		$hoadon['MANV'] = $MA_NV;
+		$hoadon['TRANG_THAI'] = 1;
 		$hoadon['NGAY_BAN'] = date('Y-m-d H:i:s');
 
 		$this->bill->insert($hoadon);

@@ -513,7 +513,8 @@ require_once ('homepage_layouts/header.php');
 														</div>
 													</div>
 
-													<input type="button" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 add2cart-btn" value="Thêm vào giỏ hàng">
+													<input type="button" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 add2cart-btn" value="Thêm vào giỏ hàng"
+													<?php if (!isset($_SESSION['user'])){?>disabled<?php } ?>>
 												</div>
 											</div>	
 										</div>

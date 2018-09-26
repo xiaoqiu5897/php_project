@@ -30,7 +30,7 @@ require_once('layouts/header.php');
 					<!-- small box -->
 					<div class="small-box bg-info">
 						<div class="inner">
-							<h3><?= $product_number ?></h3>
+							<h3><?= $product_number['COUNT(*)'] ?></h3>
 
 							<p>Sản phẩm</p>
 						</div>
@@ -45,7 +45,7 @@ require_once('layouts/header.php');
 					<!-- small box -->
 					<div class="small-box bg-success">
 						<div class="inner">
-							<h3><?= $bill_number ?></h3>
+							<h3><?= $bill_number['COUNT(*)'] ?></h3>
 
 							<p>Hóa đơn</p>
 						</div>
@@ -60,7 +60,7 @@ require_once('layouts/header.php');
 					<!-- small box -->
 					<div class="small-box bg-warning">
 						<div class="inner">
-							<h3><?= $employee_number ?></h3>
+							<h3><?= $employee_number['COUNT(*)'] ?></h3>
 
 							<p>Nhân viên</p>
 						</div>
@@ -75,7 +75,7 @@ require_once('layouts/header.php');
 					<!-- small box -->
 					<div class="small-box bg-danger">
 						<div class="inner">
-							<h3><?= $customer_number ?></h3>
+							<h3><?= $customer_number['COUNT(*)'] ?></h3>
 
 							<p>Khách hàng</p>
 						</div>
